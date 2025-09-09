@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TudoFácil - Minimercado Online</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+        crossorigin="anonymous">
+  
+  <!-- CSS Customizado -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Link para pular navegação (acessibilidade) -->
+  <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
+
+  <!-- Barra superior -->
+  <div class="bg-dark text-white py-1">
+    <div class="container d-flex justify-content-between align-items-center small">
+      <div id="saudacao" aria-live="polite">Olá!</div>
+      <div class="d-flex gap-3 align-items-center">
+        <button id="btnContraste" 
+                class="btn btn-sm btn-outline-light" 
+                type="button" 
+                aria-pressed="false"
+                aria-label="Ativar alto contraste">
+          Alto contraste
+        </button>
+        <span id="relogio" aria-live="polite">--:--:--</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">
+        Minimercado <span class="text-primary">TudoFácil</span>
+      </a>
+      
+      <button class="navbar-toggler" 
+              type="button" 
+              data-bs-toggle="collapse" 
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav" 
+              aria-expanded="false" 
+              aria-label="Alternar navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#produtos">Produtos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#cadastro">Cadastro</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#agendamento">Agendamento</a>
+          </li>
+        </ul>
+        
+        <div class="d-flex align-items-center gap-3">
+          <span class="fw-semibold" aria-live="polite">
+            Carrinho: <span id="cartCount">0</span> itens
+          </span>
+          <button class="btn btn-primary" type="button">Ver carrinho</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Carrossel principal -->
+  <section class="container my-4" id="conteudo-principal">
+    <div id="carouselPrincipal" 
+         class="carousel slide" 
+         data-bs-ride="carousel"
+         aria-label="Promoções em destaque">
+      
+      <div class="carousel-indicators">
+        <button type="button" 
+                data-bs-target="#carouselPrincipal" 
+                data-bs-slide-to="0" 
+                class="active" 
+                aria-current="true" 
+                aria-label="Slide 1"></button>
+        <button type="button" 
+                data-bs-target="#carouselPrincipal" 
+                data-bs-slide-to="1" 
+                aria-label="Slide 2"></button>
+        <button type="button" 
+                data-bs-target="#carouselPrincipal" 
+                data-bs-slide-to="2" 
+                aria-label="Slide 3"></button>
+      </div>
+      
+      <div class="carousel-inner rounded-3 shadow">
+        <div class="carousel-item active">
+          <img src="https://www.cavhortifruti.com.br/wp-content/uploads/2017/05/banner-1-1200x480.jpg" 
+               class="d-block w-100" 
+               alt="Frutas e verduras frescas em promoção">
+          <div class="carousel-caption text-start">
+            <h2 class="h4">Frutas & Verduras</h2>
+            <p>Seleção fresca do dia com ofertas especiais</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://img.freepik.com/fotos-premium/linhas-de-prateleiras-com-produtos-de-mercadorias-dentro-de-um-supermercado-variedade-de-conservas-e-massas-prateleiras-cheias-e-arrumadas_123827-27554.jpg" 
+               class="d-block w-100" 
+               alt="Produtos não perecíveis organizados nas prateleiras">
+          <div class="carousel-caption">
+            <h2 class="h4">Não Perecíveis</h2>
+            <p>Estoque completo para sua despensa</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://www.procon.ms.gov.br/wp-content/uploads/2020/01/material.jpg" 
+               class="d-block w-100" 
+               alt="Produtos de higiene e limpeza">
+          <div class="carousel-caption text-end">
+            <h2 class="h4">Higiene & Limpeza</h2>
+            <p>Casa limpa com nossa linha completa</p>
+          </div>
+        </div>
+      </div>
+      
+      <button class="carousel-control-prev" 
+              type="button" 
+              data-bs-target="#carouselPrincipal" 
+              data-bs-slide="prev"
+              aria-label="Slide anterior">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next" 
+              type="button" 
+              data-bs-target="#carouselPrincipal" 
+              data-bs-slide="next"
+              aria-label="Próximo slide">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Próximo</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Produtos -->
+  <section id="produtos" class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="h3">Produtos em Destaque</h2>
+      <div class="input-group" style="max-width: 300px;">
+        <span class="input-group-text">Buscar</span>
+        <input type="search" 
+               class="form-control" 
+               placeholder="Nome ou categoria" 
+               id="inputBusca">
+      </div>
+    </div>
+    
+    <div class="row g-3" id="gridProdutos" aria-live="polite">
+      <!-- Produtos carregados via JavaScript -->
+    </div>
+  </section>
+
+  <!-- Cadastro do Cliente -->
+  <section id="cadastro" class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card shadow">
+          <div class="card-body">
+            <h2 class="h4 mb-4 text-center">Cadastro do Cliente</h2>
+            
+            <form id="formCadastro" novalidate>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="nome" class="form-label">Nome completo *</label>
+                  <input type="text" 
+                         class="form-control" 
+                         id="nome" 
+                         name="nome" 
+                         placeholder="Ex: João Silva" 
+                         required>
+                  <div class="invalid-feedback">Informe seu nome completo</div>
+                </div>
+                
+                <div class="col-md-6">
+                  <label for="cpf" class="form-label">CPF *</label>
+                  <input type="text" 
+                         class="form-control" 
+                         id="cpf" 
+                         name="cpf" 
+                         placeholder="000.000.000-00" 
+                         pattern="^\d{3}\.\d{3}\.\d{3}-\d{2}$"
+                         required>
+                  <div class="invalid-feedback">CPF em formato válido é obrigatório</div>
+                </div>
+                
+                <div class="col-md-6">
+                  <label for="email" class="form-label">E-mail *</label>
+                  <input type="email" 
+                         class="form-control" 
+                         id="email" 
+                         name="email" 
+                         placeholder="seu@email.com" 
+                         required>
+                  <div class="invalid-feedback">E-mail válido é obrigatório</div>
+                </div>
+                
+                <div class="col-md-6">
+                  <label for="telefone" class="form-label">Telefone *</label>
+                  <input type="tel" 
+                         class="form-control" 
+                         id="telefone" 
+                         name="telefone" 
+                         placeholder="(51) 99999-9999" 
+                         pattern="^\(\d{2}\)\s?\d{4,5}-\d{4}$"
+                         required>
+                  <div class="invalid-feedback">Telefone válido é obrigatório</div>
+                </div>
+                
+                <div class="col-md-8">
+                  <label for="endereco" class="form-label">Endereço *</label>
+                  <input type="text" 
+                         class="form-control" 
+                         id="endereco" 
+                         name="endereco" 
+                         placeholder="Rua, número, bairro" 
+                         required>
+                  <div class="invalid-feedback">Endereço é obrigatório</div>
+                </div>
+                
+                <div class="col-md-4">
+                  <label for="cep" class="form-label">CEP *</label>
+                  <input type="text" 
+                         class="form-control" 
+                         id="cep" 
+                         name="cep" 
+                         placeholder="00000-000" 
+                         pattern="^\d{5}-\d{3}$"
+                         required>
+                  <div class="invalid-feedback">CEP válido é obrigatório</div>
+                </div>
+                
+                <div class="col-md-6">
+                  <label class="form-label">Sexo</label>
+                  <div class="d-flex gap-3">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="sexo" id="feminino" value="Feminino">
+                      <label class="form-check-label" for="feminino">Feminino</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="sexo" id="masculino" value="Masculino">
+                      <label class="form-check-label" for="masculino">Masculino</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="sexo" id="outro" value="Outro">
+                      <label class="form-check-label" for="outro">Outro</label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="col-md-6">
+                  <div class="form-check mt-4">
+                    <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter">
+                    <label class="form-check-label" for="newsletter">
+                      Quero receber ofertas por e-mail
+                    </label>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="mt-4 d-flex gap-2">
+                <button class="btn btn-primary" type="submit">Salvar cadastro</button>
+                <button class="btn btn-outline-secondary" type="reset">Limpar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Agendamento -->
+  <section id="agendamento" class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card shadow">
+          <div class="card-body">
+            <h2 class="h4 mb-4 text-center">Agendamento</h2>
+            
+            <form id="formAgendamento" novalidate>
+              <div class="row g-3">
+                <div class="col-12">
+                  <label class="form-label">Escolha do serviço *</label>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="card">
+                        <div class="card-body text-center">
+                          <div class="form-check">
+                            <input class="form-check-input" 
+                                   type="radio" 
+                                   name="servico" 
+                                   id="retirada" 
+                                   value="retirada" 
+                                   required>
+                            <label class="form-check-label w-100" for="retirada">
+                              <h5>Retirada no Local</h5>
+                              <p class="text-muted small">Mesmo dia (mín. 2h antecedência)</p>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="card">
+                        <div class="card-body text-center">
+                          <div class="form-check">
+                            <input class="form-check-input" 
+                                   type="radio" 
+                                   name="servico" 
+                                   id="entrega" 
+                                   value="entrega" 
+                                   required>
+                            <label class="form-check-label w-100" for="entrega">
+                              <h5>Tele-entrega</h5>
+                              <p class="text-muted small">A partir do próximo dia útil</p>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="invalid-feedback d-block" id="erroServico" style="display:none;">
+                    Selecione uma opção de serviço
+                  </div>
+                </div>
+                
+                <div class="col-md-6">
+                  <label for="data" class="form-label">Data *</label>
+                  <input type="date" 
+                         class="form-control" 
+                         id="data" 
+                         name="data" 
+                         required>
+                  <div class="form-text">Datas disponíveis variam conforme serviço</div>
+                  <div class="invalid-feedback">Escolha uma data válida</div>
+                </div>
+                
+                <div class="col-md-6">
+                  <label for="hora" class="form-label">Horário *</label>
+                  <input type="time" 
+                         class="form-control" 
+                         id="hora" 
+                         name="hora" 
+                         required>
+                  <div class="form-text">Funcionamento: 08:00 às 20:00</div>
+                  <div class="invalid-feedback">Escolha um horário válido</div>
+                </div>
+                
+                <div class="col-12">
+                  <div class="alert alert-info">
+                    <strong>Regras:</strong> Retirada pode ser no mesmo dia (mín. 2h). 
+                    Entrega somente a partir do próximo dia útil. 
+                    Horário: 08:00–20:00.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="mt-4 d-flex gap-2">
+                <button class="btn btn-primary" type="submit">Confirmar agendamento</button>
+                <button class="btn btn-outline-secondary" type="reset">Limpar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Toast para feedback -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body" id="toastMsg">Mensagem</div>
+        <button type="button" 
+                class="btn-close me-2 m-auto" 
+                data-bs-dismiss="toast" 
+                aria-label="Fechar">
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rodapé -->
+  <footer class="bg-dark text-white py-4 mt-5">
+    <div class="container text-center">
+      <p class="mb-0">&copy; <span id="ano"></span> TudoFácil. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
+          crossorigin="anonymous"></script>
+
+  <!-- JavaScript modular -->
+  <script src="js/produtos.js"></script>
+  <script src="js/formularios.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
